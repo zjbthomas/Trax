@@ -1,5 +1,5 @@
 function singleStep(obj, cmd)
-    % Backup chessState
+    %% Backup chessState
     backupStartFlag = obj.startFlag;
     backupChessState = obj.chessState;
     backupEdgeState = obj.edgeState;
@@ -7,16 +7,16 @@ function singleStep(obj, cmd)
     backupY = obj.searchStrY;
     backupId = obj.idCnt;
 
-    % Convert from command
+    %% Convert from command
     [x, y, type] = convertFromCommand(cmd);
     
-    % Place the tilt
+    %% Place the tile
     backupChessState(x, y) = 1;
     
-    % Shift if needed
+    %% Shift if needed
     [backupChessState, backupX, backupY] = shiftBoard(backupChessState, backupX, backupY, x, y);
     
-    % Update states
+    %% Update states
     
-    % Force tilts
+    %% Force tiles
 end

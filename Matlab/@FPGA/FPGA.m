@@ -7,8 +7,8 @@ classdef FPGA
         searchPtrX = 0;
         searchPtrY = 0;
         chessState;
-        edgeState = []; % 1 for Left, 2 for Bottom, 3 for Right, 4 for Top
-        idCnt = 0;
+        edgeState = []; % 0 for Left, 1 for Bottom, 2 for Right, 3 for Top
+        idCnt = 1; % MUST start from 1 in case when search the two ends of a connection will fail
     end
     methods
         function obj = FPGA(maxSpace)
