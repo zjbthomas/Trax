@@ -8,9 +8,9 @@ function [newStartFlag, newEdgeState, newX, newY, newIdCnt] =  updateStates(oldS
     % If it is the first tilt
     if (oldStartFlag == true)
         if (type == '+')
-            newEdgeState = [[1, 1, 0, oldIdCnt]; [0, 1, 1, oldIdCnt + 1]; [1, 0, 0, oldIdCnt]; [0, 0, 1, oldIdCnt + 1]];
+            newEdgeState = [[1, 1, oldIdCnt]; [0, 2, oldIdCnt + 1]; [1, 3, oldIdCnt]; [0, 4 oldIdCnt + 1]];
         elseif (type == '/')
-            newEdgeState = [[0, 1, 0, oldIdCnt]; [1, 1, 1, oldIdCnt + 1]; [1, 0, 0, oldIdCnt + 1]; [0, 0, 1, oldIdCnt]];
+            newEdgeState = [[0, 1, oldIdCnt]; [1, 2, oldIdCnt + 1]; [1, 3, oldIdCnt + 1]; [0, 4, oldIdCnt]];
         end
         newIdCnt = oldIdCnt + 2;
         newStartFlag = false;

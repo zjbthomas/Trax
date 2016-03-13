@@ -7,7 +7,7 @@ classdef FPGA
         searchPtrX = 0;
         searchPtrY = 0;
         chessState;
-        edgeState = [];
+        edgeState = []; % 1 for Left, 2 for Bottom, 3 for Right, 4 for Top
         idCnt = 0;
     end
     methods
