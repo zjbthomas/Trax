@@ -16,7 +16,5 @@ classdef FPGA
             obj.chessState = zeros(maxSpace);
         end
         % Function signatures
-        [x, y, type] = convertFromCommand(obj, cmd)
-        cmd = convertToCommand(obj, x, y, type)
     end
 end

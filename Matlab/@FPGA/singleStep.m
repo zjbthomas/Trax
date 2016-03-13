@@ -8,7 +8,7 @@ function singleStep(obj, cmd)
     backupId = obj.idCnt;
 
     % Convert from command
-    [x, y, type] = obj.convertFromCommand(cmd);
+    [x, y, type] = convertFromCommand(cmd);
     
     % Place the tilt
     backupChessState(x, y) = 1;

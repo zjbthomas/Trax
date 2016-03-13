@@ -1,4 +1,4 @@
-function [x, y, type] = convertFromCommand(obj, cmd)
+function [x, y, type] = convertFromCommand(cmd)
     x = 0;
     y = 0;
     

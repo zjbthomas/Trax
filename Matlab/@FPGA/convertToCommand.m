@@ -1,4 +1,4 @@
-function cmd = convertToCommand(obj, x, y, type)
+function cmd = convertToCommand(x, y, type)
     cmd = [];
     
     % Convert from MATLAB format
