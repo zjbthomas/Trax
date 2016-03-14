@@ -19,17 +19,17 @@ function [newStartFlag, newEdgeState, newX, newY, newIdCnt] =  updateStates(oldS
     end
     
     %% Calculate the number of conflicts
-    conflicts = calConflicts(oldChessState, x, y);
+    [cNum, cType] = calConflicts(oldChessState, x, y);
     
     %% Whether the tile is the first one of the first row
     if ((y < oldY) || (y ==oldY && x < oldX))
         % Update edge state
-        switch conflicts
+        switch cNum
             case 1
                 % Create new edgeState
                 newEdgeState = zeros(size(oldEdgeState, 1) + 2, size(oldEdgeState , 2));
                 % Find conflict point
-                n = conflictPoint(oldChessState, oldEdgeState, oldX, oldY);
+                [n, nEx] = conflictPoint(oldChessState, oldEdgeState, oldX, oldY, cType);
                 if (n == 1)  % tile(Left), tile(Bottom), old(2 : end), tile(Top)
                     % Initialize common rows of new edgeState
                     newEdgeState(3:(end-1), :) = oldEdgeState(2:end,:);
@@ -103,8 +103,8 @@ function [newStartFlag, newEdgeState, newX, newY, newIdCnt] =  updateStates(oldS
     end
     
     %% Other situations
-    n = conflictPoint(oldChessState, oldEdgeState, oldX, oldY);
-    switch conflicts
+    [n, nEx] = conflictPoint(oldChessState, oldEdgeState, oldX, oldY, cType);
+    switch cNum
         case 1
             % Create new edgeState and initialize common rows of new edgeState
             newEdgeState = zeros(size(oldEdgeState, 1) + 2, size(oldEdgeState , 2));
@@ -155,30 +155,53 @@ function [newStartFlag, newEdgeState, newX, newY, newIdCnt] =  updateStates(oldS
             % If there is only 1 conflict, must create 1 path, so update ID
             newIdCnt = oldIdCnt + 1;
         case 2
-            % Create new edgeState and initialize common rows of new edgeState
-            newEdgeState = zeros(size(oldEdgeState));
-            newEdgeState(1:(n-1), :) = oldEdgeState(1:(n-1), :);
-            newEdgeState((n+2):end, :) = oldEdgeState((n+2):end, :);
-            switch type
-                case '+'
-                    newEdgeState(n,:) = oldEdgeState(n+1,1);
-                    newEdgeState(n+1,:) = oldEdgeState(n,1);
-                case '\'
-                    if (oldEdgeState(n, 2) == 0 || oldEdgeState(n, 2) == 2)
-                        newEdgeState(n,:) = [oldEdgeState(n,1), oldEdgeState(n+1,2), oldEdgeState(n,3)];
-                        newEdgeState(n+1,:) = [oldEdgeState(n+1,1), oldEdgeState(n,2), oldEdgeState(n+1,3)];
-                    elseif (oldEdgeState(n, 2) == 1 || oldEdgeState(n, 2) == 3)
-                        % Modify the end point should be connected with another ID
-                        replaceEnd = find(newEdgeState(:,end),newEdgeState(n,end),'last');
-                        newEdgeState(replaceEnd,end) = newEdgeState(2,end);
-                        
-                        %%%%%%%%%%%
-                    else
-                        error('Error in update states.');
+            switch cType
+                case 1 % For 90 degree
+                    % Create new edgeState and initialize common rows of new edgeState
+                    newEdgeState = zeros(size(oldEdgeState));
+                    newEdgeState(1:(n-1), :) = oldEdgeState(1:(n-1), :);
+                    newEdgeState((n+2):end, :) = oldEdgeState((n+2):end, :);
+                    switch type
+                        case '+'
+                            newEdgeState(n,:) = oldEdgeState(n+1,1);
+                            newEdgeState(n+1,:) = oldEdgeState(n,1);
+                        case '\'
+                            if (oldEdgeState(n, 2) == 0 || oldEdgeState(n, 2) == 2)
+                                newEdgeState(n,:) = [oldEdgeState(n,1), oldEdgeState(n+1,2), oldEdgeState(n,3)];
+                                newEdgeState(n+1,:) = [oldEdgeState(n+1,1), oldEdgeState(n,2), oldEdgeState(n+1,3)];
+                            elseif (oldEdgeState(n, 2) == 1 || oldEdgeState(n, 2) == 3)
+                                % Modify the end point should be connected with another ID (reuse the ID of point n - find n replace by n+1)
+                                replaceEnd = find(newEdgeState(:,end),newEdgeState(n,end),'first');
+                                newEdgeState(replaceEnd,end) = oldEdgeState(n+1,end);
+                                % Update edge state
+                                newEdgeState(n,:) = [~oldEdgeState(n,1), oldEdgeState(n+1,2), oldIdCnt];
+                                newEdgeState(n+1,:) = [~oldEdgeState(n,1), oldEdgeState(n,2), oldIdCnt];
+                                % Update ID
+                                newIdCnt = oldIdCnt + 1;
+                            else
+                                error('Error in update states.');
+                            end
+                        case '/'
+                            if (oldEdgeState(n, 2) == 1 || oldEdgeState(n, 2) == 3)
+                                newEdgeState(n,:) = [oldEdgeState(n,1), oldEdgeState(n+1,2), oldEdgeState(n,3)];
+                                newEdgeState(n+1,:) = [oldEdgeState(n+1,1), oldEdgeState(n,2), oldEdgeState(n+1,3)];
+                            elseif (oldEdgeState(n, 2) == 2 || oldEdgeState(n, 2) == 4)
+                                % Modify the end point should be connected with another ID (reuse the ID of point n - find n replace by n+1)
+                                replaceEnd = find(newEdgeState(:,end),newEdgeState(n,end),'first');
+                                newEdgeState(replaceEnd,end) = oldEdgeState(n+1,end);
+                                % Update edge state
+                                newEdgeState(n,:) = [~oldEdgeState(n,1), oldEdgeState(n+1,2), oldIdCnt];
+                                newEdgeState(n+1,:) = [~oldEdgeState(n,1), oldEdgeState(n,2), oldIdCnt];
+                                % Update ID
+                                newIdCnt = oldIdCnt + 1;
+                            else
+                                error('Error in update states.');
+                            end
+                        otherwise
+                            error('Error in update states.');
                     end
-                case '/'
-                    % Update the first and the third columns of edgeState
-                    % Update the second columns
+                case -1 % For 180 degree
+                    % How to deal with the inner cycle?
                 otherwise
                     error('Error in update states.');
             end
