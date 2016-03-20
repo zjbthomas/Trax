@@ -1,2 +1,4 @@
 Q1: How to balance the compexity representation of variable and the processing latency?
+Ans: This is a rather difficult problem, which needs try-and-error.
 Q2: What is the difference between using embeded memory, SRAM and SDRAM?
+Ans: SRAM and SDRAM are a different device out of FPGA. Protocal for communicating between FPGA and them are needed, which is an overhead. Embeded memory can be used to store data, but it is less efficient than register.
