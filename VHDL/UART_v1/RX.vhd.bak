@@ -1,0 +1,81 @@
+----------------------------------------------------------------------------------
+-- Company: The Hong Kong Polytechnic University (FPGA interest group led by Dr. Bruce Sham)
+-- Engineer/Student: 
+-- 
+-- Create Date:    
+-- Design Name: 
+-- Module Name:    
+-- Project Name: 
+-- Target Devices: 
+-- Tool versions: 
+-- Description: A simple UART for the following protocol: 19200 baud rate (100 MHz clock), no parity-check bit, 8 bits in one byte and one stopping bit.  
+--
+-- Dependencies: 
+--
+-- Revision: 
+-- Revision 0.01 - File Created
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity RX is
+port (
+	reset: 	in std_logic; -- active low
+	clk:	in std_logic; -- clock
+	Rx_data:	out std_logic_vector(7 downto 0); -- received data
+	Rx_err:	out std_logic; -- error in receiving, active high
+	Rxd:	in std_logic; -- receiver input signal
+	Rx_busy:	out std_logic -- receiver busy, active low
+);
+end RX;
+
+architecture Behavioral of RX is
+
+component COMPONENT_NAME is
+port (
+	CIO1: 	in std_logic; -- clock/active low/active high
+	CIO2: 	in std_logic; -- comments	
+	CIO3:	out std_logic_vector(1 downto 0)
+);
+end component;
+---- other components
+
+signal SIGNAL1: std_logic_vector(30 downto 0); -- comments
+signal SIGNAL2: std_logic; -- comments
+signal SIGNAL3: std_logic; -- comments
+signal SIGNAL4: std_logic_vector(1 downto 0); -- comments
+---- other signals
+
+begin
+
+-- Port map of components first
+	uut0: COMPONENT_NAME port map(
+		CIO1 => SIGNAL2
+		CIO2 => SIGNAL3
+		CIO3 => SIGNAL4
+	);
+----- other components
+
+	process(clk, reset)
+	begin
+		if (reset = '0') then
+			-----
+		elsif (clk = '1' and clk'event) then
+			if (OTHER CONDITIONS)
+			------
+			elsif
+			------
+			else
+			------
+			end if;
+		end if;
+	end process;
+
+----- combinational logic
+
+end Behavioral;
+

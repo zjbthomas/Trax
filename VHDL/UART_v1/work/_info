@@ -1,0 +1,225 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/altera/workspace/UART
+Erx
+Z1 w1456562700
+Z2 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z3 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z5 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z6 8D:/altera/workspace/UART/RX.vhd
+Z7 FD:/altera/workspace/UART/RX.vhd
+l0
+L25
+VUWU1Dd:7[7_:ZzglXLEk=1
+!s100 HC1@e]K2_QQ`RTF_:;OHl0
+Z8 OV;C;10.4b;61
+32
+Z9 !s110 1457756490
+!i10b 1
+Z10 !s108 1457756489.000000
+Z11 !s90 -reportprogress|300|-work|work|D:/altera/workspace/UART/RX.vhd|
+Z12 !s107 D:/altera/workspace/UART/RX.vhd|
+!i113 1
+Z13 o-work work
+Z14 tExplicit 1
+Abehavioral
+R2
+R3
+R4
+R5
+DEx4 work 2 rx 0 22 UWU1Dd:7[7_:ZzglXLEk=1
+l42
+L36
+VHWFV@gm?l3B_DmoY99obL1
+!s100 XaHU^nVhIEEIY1F]`j?G63
+R8
+32
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 1
+R13
+R14
+Etb_uart
+Z15 w1456562555
+R2
+R3
+R4
+R5
+R0
+Z16 8D:/altera/workspace/UART/tb_UART.vhd
+Z17 FD:/altera/workspace/UART/tb_UART.vhd
+l0
+L26
+VjRLHbJ4Z:c7iMC7Nk7I=c2
+!s100 SQ]Y6VQE?0En7TdM8m62C2
+R8
+32
+Z18 !s110 1457756509
+!i10b 1
+Z19 !s108 1457756509.000000
+Z20 !s90 -reportprogress|300|-work|work|D:/altera/workspace/UART/tb_UART.vhd|
+Z21 !s107 D:/altera/workspace/UART/tb_UART.vhd|
+!i113 1
+R13
+R14
+Abehavioral
+R2
+R3
+R4
+R5
+Z22 DEx4 work 7 tb_uart 0 22 jRLHbJ4Z:c7iMC7Nk7I=c2
+l51
+L29
+Z23 VS7<;Md`:`5iJj0Ez4X?=c1
+Z24 !s100 Y9:Wa3P8J8fGV=ZYRfUh93
+R8
+32
+R18
+!i10b 1
+R19
+R20
+R21
+!i113 1
+R13
+R14
+Etx
+Z25 w1456562640
+R2
+R3
+R4
+R5
+R0
+Z26 8D:/altera/workspace/UART/TX.vhd
+Z27 FD:/altera/workspace/UART/TX.vhd
+l0
+L25
+Vb>h`XzhJO<dS1Ok2gYMn51
+!s100 AZGO>0A:JNfmXEEV<m;_Z1
+R8
+32
+R9
+!i10b 1
+Z28 !s108 1457756490.000000
+Z29 !s90 -reportprogress|300|-work|work|D:/altera/workspace/UART/TX.vhd|
+Z30 !s107 D:/altera/workspace/UART/TX.vhd|
+!i113 1
+R13
+R14
+Abehavioral
+R2
+R3
+R4
+R5
+DEx4 work 2 tx 0 22 b>h`XzhJO<dS1Ok2gYMn51
+l42
+L36
+V@BRgJ30IS`d0WmXUEgHTm3
+!s100 I^caR07ZAOj;M8[0z;lbJ1
+R8
+32
+R9
+!i10b 1
+R28
+R29
+R30
+!i113 1
+R13
+R14
+Euart
+Z31 w1456562448
+R2
+R3
+R4
+R5
+R0
+Z32 8D:/altera/workspace/UART/UART.vhd
+Z33 FD:/altera/workspace/UART/UART.vhd
+l0
+L27
+VgkLLN><nLW[zI>S:4h^[I0
+!s100 i@l0>>PReOTR6>F35@@MU1
+R8
+32
+Z34 !s110 1457756492
+!i10b 1
+Z35 !s108 1457756492.000000
+Z36 !s90 -reportprogress|300|-work|work|D:/altera/workspace/UART/UART.vhd|
+Z37 !s107 D:/altera/workspace/UART/UART.vhd|
+!i113 1
+R13
+R14
+Abehavioral
+R2
+R3
+R4
+R5
+DEx4 work 4 uart 0 22 gkLLN><nLW[zI>S:4h^[I0
+l65
+L42
+VA[hj8n`41YnVK^1N_WzOM2
+!s100 `L5;@JJ:H467kMZZZ32DJ0
+R8
+32
+R34
+!i10b 1
+R35
+R36
+R37
+!i113 1
+R13
+R14
+Euart_tb
+Z38 w1456378096
+R2
+R3
+R4
+R5
+R0
+R16
+R17
+l0
+L25
+V4o8TNz:D2L=^jMeF`NfYS0
+!s100 YT?e[3Hkj`iZiozj?U4z>0
+Z39 OV;C;10.3d;59
+32
+Z40 !s110 1456477772
+!i10b 1
+Z41 !s108 1456477772.776000
+R20
+R21
+!i113 1
+R13
+R14
+Abehavioral
+R2
+R3
+R4
+R5
+DEx4 work 7 uart_tb 0 22 4o8TNz:D2L=^jMeF`NfYS0
+l50
+L28
+VAOC=oE7_@3;jBmJLQ_<HE3
+!s100 RKlSGF2g@@7O0kdoWHBY]0
+R39
+32
+R40
+!i10b 1
+R41
+R20
+R21
+!i113 1
+R13
+R14
