@@ -76,7 +76,7 @@ begin
 					end case;
 					counter <= counter + 1;
 				-- Update state
-				elsif (counter = counter_max - 1) then
+				elsif (counter = counter_max) then
 					case state is
 						when start => counter <= 0; state <= bit0;
 						when bit0 => counter <= 0; state <= bit1;

@@ -55,11 +55,6 @@ set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_RO
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name SOURCE_FILE Trax.qsf
-set_global_assignment -name VHDL_FILE src/TX.vhd
-set_global_assignment -name VHDL_FILE src/top.vhd
-set_global_assignment -name VHDL_FILE src/pll.vhd
-set_global_assignment -name VHDL_FILE src/move_translator.vhd
 
 set_location_assignment PIN_Y2 -to clock
 set_instance_assignment -name IO_STANDARD "2.5 V" -to clock
@@ -67,22 +62,22 @@ set_location_assignment PIN_M23 -to reset
 set_instance_assignment -name IO_STANDARD "2.5 V" -to reset
 set_location_assignment PIN_E21 -to Rx_busy
 set_instance_assignment -name IO_STANDARD "2.5 V" -to Rx_busy
-set_location_assignment PIN_H19 -to Rx_data[7]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to Rx_data[7]
-set_location_assignment PIN_J19 -to Rx_data[6]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to Rx_data[6]
-set_location_assignment PIN_E18 -to Rx_data[5]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to Rx_data[5]
-set_location_assignment PIN_F18 -to Rx_data[4]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to Rx_data[4]
-set_location_assignment PIN_F21 -to Rx_data[3]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to Rx_data[3]
-set_location_assignment PIN_E19 -to Rx_data[2]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to Rx_data[2]
-set_location_assignment PIN_F19 -to Rx_data[1]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to Rx_data[1]
-set_location_assignment PIN_G19 -to Rx_data[0]
-set_instance_assignment -name IO_STANDARD "2.5 V" -to Rx_data[0]
+#set_location_assignment PIN_H19 -to Rx_data[7]
+#set_instance_assignment -name IO_STANDARD "2.5 V" -to Rx_data[7]
+#set_location_assignment PIN_J19 -to Rx_data[6]
+#set_instance_assignment -name IO_STANDARD "2.5 V" -to Rx_data[6]
+#set_location_assignment PIN_E18 -to Rx_data[5]
+#set_instance_assignment -name IO_STANDARD "2.5 V" -to Rx_data[5]
+#set_location_assignment PIN_F18 -to Rx_data[4]
+#set_instance_assignment -name IO_STANDARD "2.5 V" -to Rx_data[4]
+#set_location_assignment PIN_F21 -to Rx_data[3]
+#set_instance_assignment -name IO_STANDARD "2.5 V" -to Rx_data[3]
+#set_location_assignment PIN_E19 -to Rx_data[2]
+#set_instance_assignment -name IO_STANDARD "2.5 V" -to Rx_data[2]
+set_location_assignment PIN_F19 -to Translation_busy
+set_instance_assignment -name IO_STANDARD "2.5 V" -to Translation_busy
+set_location_assignment PIN_G19 -to Tranlation_err
+set_instance_assignment -name IO_STANDARD "2.5 V" -to Tranlation_err
 set_location_assignment PIN_H15 -to Rx_err
 set_instance_assignment -name IO_STANDARD "2.5 V" -to Rx_err
 set_location_assignment PIN_G12 -to Rxd
@@ -109,5 +104,12 @@ set_location_assignment PIN_AB28 -to Tx_data[0]
 set_instance_assignment -name IO_STANDARD "2.5 V" -to Tx_data[0]
 set_location_assignment PIN_G9 -to Txd
 set_instance_assignment -name IO_STANDARD "2.5 V" -to Txd
-set_global_assignment -name CDF_FILE output_files/Chain3.cdf
+set_global_assignment -name VHDL_FILE src/RX.vhd
+set_global_assignment -name SOURCE_FILE Trax.qsf
+set_global_assignment -name VHDL_FILE src/TX.vhd
+set_global_assignment -name VHDL_FILE src/top.vhd
+set_global_assignment -name VHDL_FILE src/pll.vhd
+set_global_assignment -name VHDL_FILE src/move_translator.vhd
+set_global_assignment -name VHDL_FILE src/board_representor.vhd
+set_global_assignment -name VHDL_FILE src/command_translator.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -22,9 +22,19 @@ reset => \send:counter[13].ACLR
 reset => \send:counter[14].ACLR
 reset => \send:counter[15].ACLR
 reset => \send:counter[16].ACLR
+reset => \send:counter[17].ACLR
+reset => \send:counter[18].ACLR
+reset => \send:counter[19].ACLR
+reset => \send:counter[20].ACLR
+reset => \send:counter[21].ACLR
+reset => \send:counter[22].ACLR
+reset => \send:counter[23].ACLR
+reset => \send:counter[24].ACLR
+reset => \send:counter[25].ACLR
+reset => \send:counter[26].ACLR
 clock => pll:pll_inst.inclk0
-Txd << move_translator:move_translator_inst.Txd
-Tx_busy << move_translator:move_translator_inst.Tx_busy
+Txd <= move_translator:move_translator_inst.Txd
+Tx_busy <= move_translator:move_translator_inst.Tx_busy
 
 
 |Trax|pll:pll_inst
@@ -129,7 +139,7 @@ reset => edges_last[0].ALOAD
 reset => edges_last[1].ALOAD
 reset => edges_last[2].ALOAD
 reset => edges_last[3].ALOAD
-reset => Tx_state~7.DATAIN
+reset => Tx_state~8.DATAIN
 reset => Tx_data[0].ENA
 reset => Tx_data[7].ENA
 reset => Tx_data[6].ENA
@@ -172,7 +182,7 @@ clk => edges_last[0].CLK
 clk => edges_last[1].CLK
 clk => edges_last[2].CLK
 clk => edges_last[3].CLK
-clk => Tx_state~5.DATAIN
+clk => Tx_state~6.DATAIN
 x[0] => Equal1.IN4
 x[0] => x_last.DATAB
 x[0] => x_temp.DATAB

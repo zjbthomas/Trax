@@ -24,14 +24,26 @@ use ieee.std_logic_unsigned.all;
 
 entity Trax is
 port(
-	reset,clock:	in std_LOGIC;
-	Txd:	out std_logic; -- transmitter output signal
+	reset:	in std_LOGIC;
+	clock:	in std_LOGIC;
+	Txd:		out std_logic; -- transmitter output signal
 	Tx_busy:	out std_logic; --transmitter busy, active high
-	Rx_data: out std_logic
+	Rxd:		in std_logic; -- receiver input signal
+	Rx_busy:	out std_logic; -- receiver busy, active high
+	Rx_err:	out std_logic; -- error in receiving, active high
+	Translation_busy:	out std_logic; -- translate busy, active high
+	Tranlation_err:	out std_logic -- error in command translation, active high
 );
 end Trax;
 
 architecture behavior of Trax is
+
+component pll IS
+PORT(
+	inclk0: IN STD_LOGIC  := '0';
+	c0		: OUT STD_LOGIC 
+	);
+END component;
 
 component move_translator is
 port (
@@ -45,47 +57,82 @@ port (
 );
 end component;
 
-component pll IS
-PORT(
-	inclk0: IN STD_LOGIC  := '0';
-	c0		: OUT STD_LOGIC 
-	);
-END component;
+component command_translator is
+port (
+	reset: 	in std_logic; -- active low
+	clk:		in std_logic; -- clock
+	Rx_err:	out std_logic; -- error in receiving, active high
+	Tranlation_err:	out std_logic; -- error in command translation, active high
+	Rxd:		in std_logic; -- receiver input signal
+	Rx_busy:	out std_logic; -- receiver busy, active high
+	Translation_busy:	out std_logic; -- translate busy, active high
+	x:			out std_logic_vector(4 downto 0); -- x coordinate
+	y:			out std_logic_vector(4 downto 0); -- y coordinate
+	tile_type: 	out std_logic_vector(1 downto 0) -- pattern type of the tile
+);
+end component;
 
-signal clk_100	:std_logic;
-signal x 		:std_logic_vector(4 downto 0); -- x coordinate
-signal y 		:std_logic_vector(4 downto 0); -- y coordinate
-signal edges	:std_logic_vector(3 downto 0); -- four edges of the tile, recorded counter-clockwisely starting from the top edge
+signal clk_100				:std_logic;
+signal x_receive 			:std_logic_vector(4 downto 0); -- x coordinate
+signal y_receive 			:std_logic_vector(4 downto 0); -- y coordinate
+signal tile_type_receive:std_logic_vector(1 downto 0); -- pattern type of the tile
+signal edges_receive		:std_logic_vector(3 downto 0); -- four edges of the tile, recorded counter-clockwisely starting from the top edge
+signal x_send 				:std_logic_vector(4 downto 0); -- x coordinate
+signal y_send 				:std_logic_vector(4 downto 0); -- y coordinate
+signal edges_send			:std_logic_vector(3 downto 0); -- four edges of the tile, recorded counter-clockwisely starting from the top edge
+signal Translation_busy_temp :std_logic; -- translate busy, active high
 
 begin
 
 pll_inst:pll port map(clock,clk_100);
+
+command_translator_inst:command_translator port map(
+	reset => reset,
+	clk => clk_100,
+	Rx_err => Rx_err,
+	Tranlation_err => Tranlation_err,
+	Rxd => Rxd,
+	Rx_busy => Rx_busy,
+	Translation_busy => Translation_busy_temp,
+	x => x_receive,
+	y => y_receive,
+	tile_type => tile_type_receive
+);
+
 move_translator_inst:move_translator port map(
 	reset => reset,
 	clk => clk_100,
-	x => x,
-	y => y,
-	edges => edges,
+	x => x_send,
+	y => y_send,
+	edges => edges_send,
 	Txd => Txd,
 	Tx_busy =>Tx_busy
 );
 
-send: process(reset, clk_100)
-variable counter: std_logic_vector(26 downto 0) := (others=>'0');
+process(reset, Translation_busy_temp)
 begin
 	if (reset = '0') then
-		counter := (others=>'0');
-		x <= "00001";
-		y <= "00001";
-		edges <= "0101";
-	elsif (clk_100 = '1' and clk_100'event) then
-		counter := counter + '1';
-		if(counter(26) = '1' ) then
-			x <= x + '1';
-			counter := (others => '0');
-		end if;
+
+	elsif (falling_edge(Translation_busy_temp)) then
+		case tile_type_receive is
+			when "01" =>
+				edges_receive <= "0011";
+				edges_send <= "0011";
+			when "10" =>
+				edges_receive <= "0110";
+				edges_send <= "0110";
+			when "11" =>
+				edges_receive <= "0101";
+				edges_send <= "0101";
+			when others =>
+				NULL;
+		end case;
+		x_send <= x_receive;
+		y_send <= y_receive;
+		--edges_send <= edges_receive;
 	end if;
 end process;
 
+Translation_busy <= Translation_busy_temp;
 
 end architecture;

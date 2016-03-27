@@ -3,35 +3,67 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : -4.548
-TNS   : -95.927
+Slack : -8.752
+TNS   : -289.832
+
+Type  : Slow 1200mV 85C Model Setup 'command_translator:command_translator_inst|RX:uut0|state.idle'
+Slack : -3.759
+TNS   : -63.097
 
 Type  : Slow 1200mV 85C Model Setup 'reset'
-Slack : -3.218
-TNS   : -11.142
+Slack : -3.565
+TNS   : -43.151
+
+Type  : Slow 1200mV 85C Model Setup 'command_translator:command_translator_inst|Rx_state.idle'
+Slack : -0.587
+TNS   : -2.018
+
+Type  : Slow 1200mV 85C Model Hold 'command_translator:command_translator_inst|Rx_state.idle'
+Slack : -1.483
+TNS   : -13.703
 
 Type  : Slow 1200mV 85C Model Hold 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.403
-TNS   : 0.000
+Slack : -0.199
+TNS   : -0.199
+
+Type  : Slow 1200mV 85C Model Hold 'command_translator:command_translator_inst|RX:uut0|state.idle'
+Slack : -0.031
+TNS   : -0.351
 
 Type  : Slow 1200mV 85C Model Hold 'reset'
-Slack : 1.246
+Slack : 2.623
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Recovery 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : -2.425
-TNS   : -163.873
+Slack : -2.993
+TNS   : -226.625
+
+Type  : Slow 1200mV 85C Model Recovery 'command_translator:command_translator_inst|RX:uut0|state.idle'
+Slack : -0.862
+TNS   : -0.862
+
+Type  : Slow 1200mV 85C Model Removal 'command_translator:command_translator_inst|RX:uut0|state.idle'
+Slack : -0.685
+TNS   : -6.183
 
 Type  : Slow 1200mV 85C Model Removal 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.995
+Slack : 1.451
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'reset'
 Slack : -3.000
 TNS   : -3.000
 
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'command_translator:command_translator_inst|RX:uut0|state.idle'
+Slack : -1.285
+TNS   : -33.410
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'command_translator:command_translator_inst|Rx_state.idle'
+Slack : -1.285
+TNS   : -16.705
+
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 4.697
+Slack : 4.711
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clock'
@@ -39,35 +71,67 @@ Slack : 9.891
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : -4.061
-TNS   : -84.732
+Slack : -7.880
+TNS   : -256.430
+
+Type  : Slow 1200mV 0C Model Setup 'command_translator:command_translator_inst|RX:uut0|state.idle'
+Slack : -3.369
+TNS   : -57.927
 
 Type  : Slow 1200mV 0C Model Setup 'reset'
-Slack : -2.957
-TNS   : -10.208
+Slack : -3.115
+TNS   : -37.359
+
+Type  : Slow 1200mV 0C Model Setup 'command_translator:command_translator_inst|Rx_state.idle'
+Slack : -0.415
+TNS   : -1.299
+
+Type  : Slow 1200mV 0C Model Hold 'command_translator:command_translator_inst|Rx_state.idle'
+Slack : -1.301
+TNS   : -11.913
 
 Type  : Slow 1200mV 0C Model Hold 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.355
+Slack : -0.293
+TNS   : -0.293
+
+Type  : Slow 1200mV 0C Model Hold 'command_translator:command_translator_inst|RX:uut0|state.idle'
+Slack : 0.027
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'reset'
-Slack : 1.129
+Slack : 2.332
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Recovery 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : -2.051
-TNS   : -136.570
+Slack : -2.560
+TNS   : -190.720
+
+Type  : Slow 1200mV 0C Model Recovery 'command_translator:command_translator_inst|RX:uut0|state.idle'
+Slack : -0.851
+TNS   : -0.851
+
+Type  : Slow 1200mV 0C Model Removal 'command_translator:command_translator_inst|RX:uut0|state.idle'
+Slack : -0.568
+TNS   : -4.974
 
 Type  : Slow 1200mV 0C Model Removal 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.850
+Slack : 1.263
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'reset'
 Slack : -3.000
 TNS   : -3.000
 
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'command_translator:command_translator_inst|RX:uut0|state.idle'
+Slack : -1.285
+TNS   : -33.410
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'command_translator:command_translator_inst|Rx_state.idle'
+Slack : -1.285
+TNS   : -16.705
+
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 4.688
+Slack : 4.711
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clock'
@@ -75,35 +139,67 @@ Slack : 9.887
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : -2.321
-TNS   : -49.444
+Slack : -4.238
+TNS   : -136.313
 
 Type  : Fast 1200mV 0C Model Setup 'reset'
-Slack : -1.401
-TNS   : -4.177
+Slack : -1.685
+TNS   : -20.091
 
-Type  : Fast 1200mV 0C Model Hold 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.178
+Type  : Fast 1200mV 0C Model Setup 'command_translator:command_translator_inst|RX:uut0|state.idle'
+Slack : -1.529
+TNS   : -19.244
+
+Type  : Fast 1200mV 0C Model Setup 'command_translator:command_translator_inst|Rx_state.idle'
+Slack : 0.151
 TNS   : 0.000
 
+Type  : Fast 1200mV 0C Model Hold 'command_translator:command_translator_inst|Rx_state.idle'
+Slack : -0.507
+TNS   : -3.638
+
+Type  : Fast 1200mV 0C Model Hold 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -0.122
+TNS   : -0.122
+
+Type  : Fast 1200mV 0C Model Hold 'command_translator:command_translator_inst|RX:uut0|state.idle'
+Slack : -0.040
+TNS   : -0.040
+
 Type  : Fast 1200mV 0C Model Hold 'reset'
-Slack : 0.509
+Slack : 1.674
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Recovery 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : -1.359
-TNS   : -95.333
+Slack : -1.718
+TNS   : -130.205
+
+Type  : Fast 1200mV 0C Model Recovery 'command_translator:command_translator_inst|RX:uut0|state.idle'
+Slack : -0.095
+TNS   : -0.095
+
+Type  : Fast 1200mV 0C Model Removal 'command_translator:command_translator_inst|RX:uut0|state.idle'
+Slack : -0.142
+TNS   : -0.623
 
 Type  : Fast 1200mV 0C Model Removal 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 0.428
+Slack : 0.630
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'reset'
 Slack : -3.000
 TNS   : -3.000
 
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'command_translator:command_translator_inst|RX:uut0|state.idle'
+Slack : -1.000
+TNS   : -26.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'command_translator:command_translator_inst|Rx_state.idle'
+Slack : -1.000
+TNS   : -13.000
+
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
-Slack : 4.763
+Slack : 4.745
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clock'

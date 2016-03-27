@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Trax
-Thu Mar 24 00:30:20 2016
+Sat Mar 26 22:53:07 2016
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 Patches 0.01we SJ Web Edition
 
 
@@ -15,17 +15,18 @@ Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 Patches 0.01we SJ Web Edit
   7. Analysis & Synthesis Resource Utilization by Entity
   8. State Machine - |Trax|move_translator:move_translator_inst|Tx_state
   9. State Machine - |Trax|move_translator:move_translator_inst|TX:uut0|state
- 10. Registers Removed During Synthesis
- 11. Removed Registers Triggering Further Register Optimizations
- 12. General Register Statistics
- 13. Inverted Register Statistics
- 14. Multiplexer Restructuring Statistics (Restructuring Performed)
- 15. Parameter Settings for User Entity Instance: pll:pll_inst|altpll:altpll_component
- 16. altpll Parameter Settings by Entity Instance
- 17. Port Connectivity Checks: "move_translator:move_translator_inst"
- 18. Post-Synthesis Netlist Statistics for Top Partition
- 19. Elapsed Time Per Partition
- 20. Analysis & Synthesis Messages
+ 10. State Machine - |Trax|command_translator:command_translator_inst|Rx_state
+ 11. State Machine - |Trax|command_translator:command_translator_inst|RX:uut0|state
+ 12. Registers Removed During Synthesis
+ 13. Removed Registers Triggering Further Register Optimizations
+ 14. General Register Statistics
+ 15. Inverted Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Parameter Settings for User Entity Instance: pll:pll_inst|altpll:altpll_component
+ 18. altpll Parameter Settings by Entity Instance
+ 19. Post-Synthesis Netlist Statistics for Top Partition
+ 20. Elapsed Time Per Partition
+ 21. Analysis & Synthesis Messages
 
 
 
@@ -52,16 +53,16 @@ agreement for further details.
 +------------------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                                   ;
 +------------------------------------+-----------------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Mar 24 00:30:20 2016                     ;
+; Analysis & Synthesis Status        ; Successful - Sat Mar 26 22:53:07 2016                     ;
 ; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 Patches 0.01we SJ Web Edition ;
 ; Revision Name                      ; Trax                                                      ;
 ; Top-level Entity Name              ; Trax                                                      ;
 ; Family                             ; Cyclone IV E                                              ;
-; Total logic elements               ; 181                                                       ;
-;     Total combinational functions  ; 163                                                       ;
-;     Dedicated logic registers      ; 88                                                        ;
-; Total registers                    ; 88                                                        ;
-; Total pins                         ; 5                                                         ;
+; Total logic elements               ; 326                                                       ;
+;     Total combinational functions  ; 271                                                       ;
+;     Dedicated logic registers      ; 146                                                       ;
+; Total registers                    ; 146                                                       ;
+; Total pins                         ; 9                                                         ;
 ; Total virtual pins                 ; 0                                                         ;
 ; Total memory bits                  ; 0                                                         ;
 ; Embedded Multiplier 9-bit elements ; 0                                                         ;
@@ -167,22 +168,24 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                         ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                     ; Library ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------+---------+
-; src/TX.vhd                       ; yes             ; User VHDL File               ; D:/GitHub/Trax/VHDL/BoardRepresentor_V0/src/TX.vhd               ;         ;
-; src/top.vhd                      ; yes             ; User VHDL File               ; D:/GitHub/Trax/VHDL/BoardRepresentor_V0/src/top.vhd              ;         ;
-; src/pll.vhd                      ; yes             ; User Wizard-Generated File   ; D:/GitHub/Trax/VHDL/BoardRepresentor_V0/src/pll.vhd              ;         ;
-; src/move_translator.vhd          ; yes             ; User VHDL File               ; D:/GitHub/Trax/VHDL/BoardRepresentor_V0/src/move_translator.vhd  ;         ;
-; altpll.tdf                       ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altpll.tdf        ;         ;
-; aglobal150.inc                   ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/aglobal150.inc    ;         ;
-; stratix_pll.inc                  ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/stratix_pll.inc   ;         ;
-; stratixii_pll.inc                ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/stratixii_pll.inc ;         ;
-; cycloneii_pll.inc                ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/cycloneii_pll.inc ;         ;
-; db/pll_altpll.v                  ; yes             ; Auto-Generated Megafunction  ; D:/GitHub/Trax/VHDL/BoardRepresentor_V0/db/pll_altpll.v          ;         ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                           ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                       ; Library ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------+---------+
+; src/RX.vhd                       ; yes             ; User VHDL File               ; D:/GitHub/Trax/VHDL/BoardRepresentor_V0/src/RX.vhd                 ;         ;
+; src/TX.vhd                       ; yes             ; User VHDL File               ; D:/GitHub/Trax/VHDL/BoardRepresentor_V0/src/TX.vhd                 ;         ;
+; src/top.vhd                      ; yes             ; User VHDL File               ; D:/GitHub/Trax/VHDL/BoardRepresentor_V0/src/top.vhd                ;         ;
+; src/pll.vhd                      ; yes             ; User Wizard-Generated File   ; D:/GitHub/Trax/VHDL/BoardRepresentor_V0/src/pll.vhd                ;         ;
+; src/move_translator.vhd          ; yes             ; User VHDL File               ; D:/GitHub/Trax/VHDL/BoardRepresentor_V0/src/move_translator.vhd    ;         ;
+; src/command_translator.vhd       ; yes             ; User VHDL File               ; D:/GitHub/Trax/VHDL/BoardRepresentor_V0/src/command_translator.vhd ;         ;
+; altpll.tdf                       ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/altpll.tdf          ;         ;
+; aglobal150.inc                   ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/aglobal150.inc      ;         ;
+; stratix_pll.inc                  ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/stratix_pll.inc     ;         ;
+; stratixii_pll.inc                ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/stratixii_pll.inc   ;         ;
+; cycloneii_pll.inc                ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/cycloneii_pll.inc   ;         ;
+; db/pll_altpll.v                  ; yes             ; Auto-Generated Megafunction  ; D:/GitHub/Trax/VHDL/BoardRepresentor_V0/db/pll_altpll.v            ;         ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------------+
@@ -190,23 +193,23 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimated Total logic elements              ; 181         ;
+; Estimated Total logic elements              ; 326         ;
 ;                                             ;             ;
-; Total combinational functions               ; 163         ;
+; Total combinational functions               ; 271         ;
 ; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 45          ;
-;     -- 3 input functions                    ; 35          ;
-;     -- <=2 input functions                  ; 83          ;
+;     -- 4 input functions                    ; 131         ;
+;     -- 3 input functions                    ; 61          ;
+;     -- <=2 input functions                  ; 79          ;
 ;                                             ;             ;
 ; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 122         ;
-;     -- arithmetic mode                      ; 41          ;
+;     -- normal mode                          ; 247         ;
+;     -- arithmetic mode                      ; 24          ;
 ;                                             ;             ;
-; Total registers                             ; 88          ;
-;     -- Dedicated logic registers            ; 88          ;
+; Total registers                             ; 146         ;
+;     -- Dedicated logic registers            ; 146         ;
 ;     -- I/O registers                        ; 0           ;
 ;                                             ;             ;
-; I/O pins                                    ; 5           ;
+; I/O pins                                    ; 9           ;
 ;                                             ;             ;
 ; Embedded Multiplier 9-bit elements          ; 0           ;
 ;                                             ;             ;
@@ -214,38 +217,41 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;     -- PLLs                                 ; 1           ;
 ;                                             ;             ;
 ; Maximum fan-out node                        ; reset~input ;
-; Maximum fan-out                             ; 97          ;
-; Total fan-out                               ; 767         ;
-; Average fan-out                             ; 2.93        ;
+; Maximum fan-out                             ; 162         ;
+; Total fan-out                               ; 1421        ;
+; Average fan-out                             ; 3.26        ;
 +---------------------------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                         ;
-+-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------+--------------+
-; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                  ; Library Name ;
-+-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------+--------------+
-; |Trax                                     ; 163 (58)          ; 88 (31)      ; 0           ; 0            ; 0       ; 0         ; 5    ; 0            ; |Trax                                                                ; work         ;
-;    |move_translator:move_translator_inst| ; 105 (62)          ; 57 (25)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Trax|move_translator:move_translator_inst                           ; work         ;
-;       |TX:uut0|                           ; 43 (43)           ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Trax|move_translator:move_translator_inst|TX:uut0                   ; work         ;
-;    |pll:pll_inst|                         ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Trax|pll:pll_inst                                                   ; work         ;
-;       |altpll:altpll_component|           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Trax|pll:pll_inst|altpll:altpll_component                           ; work         ;
-;          |pll_altpll:auto_generated|      ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Trax|pll:pll_inst|altpll:altpll_component|pll_altpll:auto_generated ; work         ;
-+-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------+--------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                               ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                      ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                  ; Library Name ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------+--------------+
+; |Trax                                           ; 271 (3)           ; 146 (13)     ; 0           ; 0            ; 0       ; 0         ; 9    ; 0            ; |Trax                                                                ; work         ;
+;    |command_translator:command_translator_inst| ; 103 (53)          ; 67 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Trax|command_translator:command_translator_inst                     ; work         ;
+;       |RX:uut0|                                 ; 50 (50)           ; 41 (41)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Trax|command_translator:command_translator_inst|RX:uut0             ; work         ;
+;    |move_translator:move_translator_inst|       ; 165 (122)         ; 66 (34)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Trax|move_translator:move_translator_inst                           ; work         ;
+;       |TX:uut0|                                 ; 43 (43)           ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Trax|move_translator:move_translator_inst|TX:uut0                   ; work         ;
+;    |pll:pll_inst|                               ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Trax|pll:pll_inst                                                   ; work         ;
+;       |altpll:altpll_component|                 ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Trax|pll:pll_inst|altpll:altpll_component                           ; work         ;
+;          |pll_altpll:auto_generated|            ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Trax|pll:pll_inst|altpll:altpll_component|pll_altpll:auto_generated ; work         ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
 Encoding Type:  One-Hot
-+---------------------------------------------------------------------------------------------------+
-; State Machine - |Trax|move_translator:move_translator_inst|Tx_state                               ;
-+-----------------------+-----------------------+-----------------+-----------------+---------------+
-; Name                  ; Tx_state.tile_pattern ; Tx_state.axis_y ; Tx_state.axis_x ; Tx_state.idle ;
-+-----------------------+-----------------------+-----------------+-----------------+---------------+
-; Tx_state.idle         ; 0                     ; 0               ; 0               ; 0             ;
-; Tx_state.axis_x       ; 0                     ; 0               ; 1               ; 1             ;
-; Tx_state.axis_y       ; 0                     ; 1               ; 0               ; 1             ;
-; Tx_state.tile_pattern ; 1                     ; 0               ; 0               ; 1             ;
-+-----------------------+-----------------------+-----------------+-----------------+---------------+
++------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Trax|move_translator:move_translator_inst|Tx_state                                                    ;
++-----------------------+--------------------+-----------------------+-----------------+-----------------+---------------+
+; Name                  ; Tx_state.line_feed ; Tx_state.tile_pattern ; Tx_state.axis_y ; Tx_state.axis_x ; Tx_state.idle ;
++-----------------------+--------------------+-----------------------+-----------------+-----------------+---------------+
+; Tx_state.idle         ; 0                  ; 0                     ; 0               ; 0               ; 0             ;
+; Tx_state.axis_x       ; 0                  ; 0                     ; 0               ; 1               ; 1             ;
+; Tx_state.axis_y       ; 0                  ; 0                     ; 1               ; 0               ; 1             ;
+; Tx_state.tile_pattern ; 0                  ; 1                     ; 0               ; 0               ; 1             ;
+; Tx_state.line_feed    ; 1                  ; 0                     ; 0               ; 0               ; 1             ;
++-----------------------+--------------------+-----------------------+-----------------+-----------------+---------------+
 
 
 Encoding Type:  One-Hot
@@ -268,23 +274,52 @@ Encoding Type:  One-Hot
 +-------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+-------------+------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                                    ;
-+------------------------------------------------------+----------------------------------------------------------------+
-; Register name                                        ; Reason for Removal                                             ;
-+------------------------------------------------------+----------------------------------------------------------------+
-; \send:counter[26]                                    ; Stuck at GND due to stuck port data_in                         ;
-; move_translator:move_translator_inst|edges_last[1,3] ; Stuck at GND due to stuck port data_in                         ;
-; move_translator:move_translator_inst|y_last[1..4]    ; Stuck at GND due to stuck port data_in                         ;
-; move_translator:move_translator_inst|edges_last[2]   ; Merged with move_translator:move_translator_inst|edges_last[0] ;
-; move_translator:move_translator_inst|y_last[0]       ; Merged with move_translator:move_translator_inst|edges_last[0] ;
-; move_translator:move_translator_inst|y_temp[0]       ; Merged with move_translator:move_translator_inst|edges_last[0] ;
-; move_translator:move_translator_inst|x_temp[0]       ; Merged with move_translator:move_translator_inst|x_last[0]     ;
-; move_translator:move_translator_inst|Tx_data[7]      ; Stuck at GND due to stuck port data_in                         ;
-; move_translator:move_translator_inst|TX:uut0|reg[7]  ; Stuck at GND due to stuck port data_in                         ;
-; move_translator:move_translator_inst|edges_last[0]   ; Stuck at GND due to stuck port data_in                         ;
-; Total Number of Removed Registers = 14               ;                                                                ;
-+------------------------------------------------------+----------------------------------------------------------------+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------+
+; State Machine - |Trax|command_translator:command_translator_inst|Rx_state                         ;
++-----------------------+-----------------------+-----------------+-----------------+---------------+
+; Name                  ; Rx_state.tile_pattern ; Rx_state.axis_y ; Rx_state.axis_x ; Rx_state.idle ;
++-----------------------+-----------------------+-----------------+-----------------+---------------+
+; Rx_state.idle         ; 0                     ; 0               ; 0               ; 0             ;
+; Rx_state.axis_x       ; 0                     ; 0               ; 1               ; 1             ;
+; Rx_state.axis_y       ; 0                     ; 1               ; 0               ; 1             ;
+; Rx_state.tile_pattern ; 1                     ; 0               ; 0               ; 1             ;
++-----------------------+-----------------------+-----------------+-----------------+---------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Trax|command_translator:command_translator_inst|RX:uut0|state                                                                              ;
++-------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+-------------+------------+
+; Name        ; state.stop ; state.bit7 ; state.bit6 ; state.bit5 ; state.bit4 ; state.bit3 ; state.bit2 ; state.bit1 ; state.bit0 ; state.start ; state.idle ;
++-------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+-------------+------------+
+; state.idle  ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0           ; 0          ;
+; state.start ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1           ; 1          ;
+; state.bit0  ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0           ; 1          ;
+; state.bit1  ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0           ; 1          ;
+; state.bit2  ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0           ; 1          ;
+; state.bit3  ; 0          ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0           ; 1          ;
+; state.bit4  ; 0          ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0           ; 1          ;
+; state.bit5  ; 0          ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0           ; 1          ;
+; state.bit6  ; 0          ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0           ; 1          ;
+; state.bit7  ; 0          ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0           ; 1          ;
+; state.stop  ; 1          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0          ; 0           ; 1          ;
++-------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+-------------+------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                               ;
++-----------------------------------------------------+------------------------------------------------------------+
+; Register name                                       ; Reason for Removal                                         ;
++-----------------------------------------------------+------------------------------------------------------------+
+; move_translator:move_translator_inst|x_temp[0]      ; Merged with move_translator:move_translator_inst|x_last[0] ;
+; move_translator:move_translator_inst|y_temp[0]      ; Merged with move_translator:move_translator_inst|y_last[0] ;
+; edges_send[3]                                       ; Stuck at GND due to stuck port data_in                     ;
+; move_translator:move_translator_inst|edges_last[3]  ; Stuck at GND due to stuck port data_in                     ;
+; move_translator:move_translator_inst|Tx_data[7]     ; Stuck at GND due to stuck port data_in                     ;
+; move_translator:move_translator_inst|TX:uut0|reg[7] ; Stuck at GND due to stuck port data_in                     ;
+; Total Number of Removed Registers = 6               ;                                                            ;
++-----------------------------------------------------+------------------------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------+
@@ -292,6 +327,8 @@ Encoding Type:  One-Hot
 +-------------------------------------------------+---------------------------+-----------------------------------------------------+
 ; Register name                                   ; Reason for Removal        ; Registers Removed due to This Register              ;
 +-------------------------------------------------+---------------------------+-----------------------------------------------------+
+; edges_send[3]                                   ; Stuck at GND              ; move_translator:move_translator_inst|edges_last[3]  ;
+;                                                 ; due to stuck port data_in ;                                                     ;
 ; move_translator:move_translator_inst|Tx_data[7] ; Stuck at GND              ; move_translator:move_translator_inst|TX:uut0|reg[7] ;
 ;                                                 ; due to stuck port data_in ;                                                     ;
 +-------------------------------------------------+---------------------------+-----------------------------------------------------+
@@ -302,12 +339,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 88    ;
-; Number of registers using Synchronous Clear  ; 1     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 81    ;
+; Total registers                              ; 146   ;
+; Number of registers using Synchronous Clear  ; 14    ;
+; Number of registers using Synchronous Load   ; 2     ;
+; Number of registers using Asynchronous Clear ; 114   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 54    ;
+; Number of registers using Clock Enable       ; 120   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -318,23 +355,31 @@ Encoding Type:  One-Hot
 ; Inverted Register                                ; Fan out ;
 +--------------------------------------------------+---------+
 ; move_translator:move_translator_inst|TX:uut0|Txd ; 2       ;
-; x[0]                                             ; 6       ;
-; Total number of inverted registers = 2           ;         ;
+; Total number of inverted registers = 1           ;         ;
 +--------------------------------------------------+---------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                               ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------+
-; 4:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |Trax|move_translator:move_translator_inst|TX:uut0|counter[11] ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Trax|move_translator:move_translator_inst|y_temp[3]           ;
-; 6:1                ; 5 bits    ; 20 LEs        ; 15 LEs               ; 5 LEs                  ; Yes        ; |Trax|move_translator:move_translator_inst|Tx_data[4]          ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Trax|move_translator:move_translator_inst|x_temp[1]           ;
-; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |Trax|move_translator:move_translator_inst|TX:uut0|state       ;
-; 8:1                ; 4 bits    ; 20 LEs        ; 12 LEs               ; 8 LEs                  ; No         ; |Trax|move_translator:move_translator_inst|Tx_state            ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------+
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |Trax|edges_send[2]                                                 ;
+; 4:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |Trax|move_translator:move_translator_inst|TX:uut0|counter[5]       ;
+; 6:1                ; 13 bits   ; 52 LEs        ; 13 LEs               ; 39 LEs                 ; Yes        ; |Trax|command_translator:command_translator_inst|RX:uut0|counter[9] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Trax|command_translator:command_translator_inst|x_temp[4]          ;
+; 127:1              ; 10 bits   ; 840 LEs       ; 0 LEs                ; 840 LEs                ; Yes        ; |Trax|command_translator:command_translator_inst|y[0]               ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 4 LEs                ; 336 LEs                ; Yes        ; |Trax|command_translator:command_translator_inst|tile_type[1]       ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 10 LEs               ; 2 LEs                  ; Yes        ; |Trax|move_translator:move_translator_inst|Tx_data[0]               ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; Yes        ; |Trax|command_translator:command_translator_inst|y_temp[3]          ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |Trax|move_translator:move_translator_inst|x_temp[4]                ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |Trax|move_translator:move_translator_inst|y_temp[2]                ;
+; 5:1                ; 9 bits    ; 27 LEs        ; 18 LEs               ; 9 LEs                  ; No         ; |Trax|command_translator:command_translator_inst|RX:uut0|state      ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |Trax|move_translator:move_translator_inst|TX:uut0|state            ;
+; 10:1               ; 3 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; No         ; |Trax|move_translator:move_translator_inst|Tx_state                 ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 4 LEs                ; 10 LEs                 ; No         ; |Trax|move_translator:move_translator_inst|Tx_state                 ;
+; 262:1              ; 4 bits    ; 696 LEs       ; 12 LEs               ; 684 LEs                ; No         ; |Trax|command_translator:command_translator_inst|Selector6          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------+
@@ -728,45 +773,32 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+--------------------------------------+
 
 
-+------------------------------------------------------------------+
-; Port Connectivity Checks: "move_translator:move_translator_inst" ;
-+----------+-------+----------+------------------------------------+
-; Port     ; Type  ; Severity ; Details                            ;
-+----------+-------+----------+------------------------------------+
-; y[4..1]  ; Input ; Info     ; Stuck at GND                       ;
-; y[0]     ; Input ; Info     ; Stuck at VCC                       ;
-; edges[3] ; Input ; Info     ; Stuck at GND                       ;
-; edges[2] ; Input ; Info     ; Stuck at VCC                       ;
-; edges[1] ; Input ; Info     ; Stuck at GND                       ;
-; edges[0] ; Input ; Info     ; Stuck at VCC                       ;
-+----------+-------+----------+------------------------------------+
-
-
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 5                           ;
-; cycloneiii_ff         ; 88                          ;
-;     CLR               ; 33                          ;
+; boundary_port         ; 9                           ;
+; cycloneiii_ff         ; 146                         ;
+;     CLR               ; 25                          ;
 ;     CLR SCLR          ; 1                           ;
-;     ENA               ; 7                           ;
-;     ENA CLR           ; 47                          ;
-; cycloneiii_lcell_comb ; 165                         ;
-;     arith             ; 41                          ;
-;         2 data inputs ; 40                          ;
-;         3 data inputs ; 1                           ;
-;     normal            ; 124                         ;
-;         0 data inputs ; 2                           ;
-;         1 data inputs ; 4                           ;
-;         2 data inputs ; 39                          ;
-;         3 data inputs ; 34                          ;
-;         4 data inputs ; 45                          ;
+;     ENA               ; 32                          ;
+;     ENA CLR           ; 73                          ;
+;     ENA CLR SCLR      ; 13                          ;
+;     ENA CLR SLD       ; 2                           ;
+; cycloneiii_lcell_comb ; 274                         ;
+;     arith             ; 24                          ;
+;         2 data inputs ; 24                          ;
+;     normal            ; 250                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 6                           ;
+;         2 data inputs ; 51                          ;
+;         3 data inputs ; 61                          ;
+;         4 data inputs ; 131                         ;
 ; cycloneiii_pll        ; 1                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 5.00                        ;
-; Average LUT depth     ; 3.37                        ;
+; Max LUT depth         ; 6.00                        ;
+; Average LUT depth     ; 3.38                        ;
 +-----------------------+-----------------------------+
 
 
@@ -775,7 +807,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -785,9 +817,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 15.0.0 Build 145 04/22/2015 Patches 0.01we SJ Web Edition
-    Info: Processing started: Thu Mar 24 00:29:54 2016
+    Info: Processing started: Sat Mar 26 22:52:42 2016
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Trax -c Trax
 Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file src/rx.vhd
+    Info (12022): Found design unit 1: RX-Behavioral
+    Info (12023): Found entity 1: RX
 Info (12021): Found 2 design units, including 1 entities, in source file src/tx.vhd
     Info (12022): Found design unit 1: TX-Behavioral
     Info (12023): Found entity 1: TX
@@ -800,19 +835,13 @@ Info (12021): Found 2 design units, including 1 entities, in source file src/pll
 Info (12021): Found 2 design units, including 1 entities, in source file src/move_translator.vhd
     Info (12022): Found design unit 1: move_translator-Behavioral
     Info (12023): Found entity 1: move_translator
+Info (12021): Found 1 design units, including 1 entities, in source file src/board_representor.vhd
+    Info (12023): Found entity 1: board_representor
+Info (12021): Found 2 design units, including 1 entities, in source file src/command_translator.vhd
+    Info (12022): Found design unit 1: command_translator-Behavioral
+    Info (12023): Found entity 1: command_translator
 Info (12127): Elaborating entity "Trax" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at top.vhd(30): used implicit default value for signal "Rx_data" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10631): VHDL Process Statement warning at top.vhd(73): inferring latch(es) for signal or variable "y", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at top.vhd(73): inferring latch(es) for signal or variable "edges", which holds its previous value in one or more paths through the process
-Info (10041): Inferred latch for "edges[0]" at top.vhd(73)
-Info (10041): Inferred latch for "edges[1]" at top.vhd(73)
-Info (10041): Inferred latch for "edges[2]" at top.vhd(73)
-Info (10041): Inferred latch for "edges[3]" at top.vhd(73)
-Info (10041): Inferred latch for "y[0]" at top.vhd(73)
-Info (10041): Inferred latch for "y[1]" at top.vhd(73)
-Info (10041): Inferred latch for "y[2]" at top.vhd(73)
-Info (10041): Inferred latch for "y[3]" at top.vhd(73)
-Info (10041): Inferred latch for "y[4]" at top.vhd(73)
+Warning (10036): Verilog HDL or VHDL warning at top.vhd(79): object "edges_receive" assigned a value but never read
 Info (12128): Elaborating entity "pll" for hierarchy "pll:pll_inst"
 Info (12128): Elaborating entity "altpll" for hierarchy "pll:pll_inst|altpll:altpll_component"
 Info (12130): Elaborated megafunction instantiation "pll:pll_inst|altpll:altpll_component"
@@ -874,57 +903,55 @@ Info (12133): Instantiated megafunction "pll:pll_inst|altpll:altpll_component" w
 Info (12021): Found 1 design units, including 1 entities, in source file db/pll_altpll.v
     Info (12023): Found entity 1: pll_altpll
 Info (12128): Elaborating entity "pll_altpll" for hierarchy "pll:pll_inst|altpll:altpll_component|pll_altpll:auto_generated"
+Info (12128): Elaborating entity "command_translator" for hierarchy "command_translator:command_translator_inst"
+Warning (10631): VHDL Process Statement warning at command_translator.vhd(72): inferring latch(es) for signal or variable "Tranlation_err", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "Tranlation_err" at command_translator.vhd(72)
+Info (12128): Elaborating entity "RX" for hierarchy "command_translator:command_translator_inst|RX:uut0"
 Info (12128): Elaborating entity "move_translator" for hierarchy "move_translator:move_translator_inst"
-Warning (10492): VHDL Process Statement warning at move_translator.vhd(79): signal "edges" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at move_translator.vhd(80): signal "x" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at move_translator.vhd(81): signal "y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at move_translator.vhd(82): signal "x" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at move_translator.vhd(83): signal "y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at move_translator.vhd(80): signal "edges" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at move_translator.vhd(81): signal "x" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at move_translator.vhd(82): signal "y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at move_translator.vhd(83): signal "x" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at move_translator.vhd(84): signal "y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Info (12128): Elaborating entity "TX" for hierarchy "move_translator:move_translator_inst|TX:uut0"
-Warning (12069): Ignored assignment(s) for "Rx_data[0]" because "Rx_data" is not a bus or array
-Warning (12069): Ignored assignment(s) for "Rx_data[1]" because "Rx_data" is not a bus or array
-Warning (12069): Ignored assignment(s) for "Rx_data[2]" because "Rx_data" is not a bus or array
-Warning (12069): Ignored assignment(s) for "Rx_data[3]" because "Rx_data" is not a bus or array
-Warning (12069): Ignored assignment(s) for "Rx_data[4]" because "Rx_data" is not a bus or array
-Warning (12069): Ignored assignment(s) for "Rx_data[5]" because "Rx_data" is not a bus or array
-Warning (12069): Ignored assignment(s) for "Rx_data[6]" because "Rx_data" is not a bus or array
-Warning (12069): Ignored assignment(s) for "Rx_data[7]" because "Rx_data" is not a bus or array
-Warning (12069): Ignored assignment(s) for "Rx_data[0]" because "Rx_data" is not a bus or array
-Warning (12069): Ignored assignment(s) for "Rx_data[1]" because "Rx_data" is not a bus or array
-Warning (12069): Ignored assignment(s) for "Rx_data[2]" because "Rx_data" is not a bus or array
-Warning (12069): Ignored assignment(s) for "Rx_data[3]" because "Rx_data" is not a bus or array
-Warning (12069): Ignored assignment(s) for "Rx_data[4]" because "Rx_data" is not a bus or array
-Warning (12069): Ignored assignment(s) for "Rx_data[5]" because "Rx_data" is not a bus or array
-Warning (12069): Ignored assignment(s) for "Rx_data[6]" because "Rx_data" is not a bus or array
-Warning (12069): Ignored assignment(s) for "Rx_data[7]" because "Rx_data" is not a bus or array
 Info (13000): Registers with preset signals will power-up high
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
-    Warning (13310): Register "move_translator:move_translator_inst|x_temp[4]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|x_temp[4]~_emulated" and latch "move_translator:move_translator_inst|x_temp[4]~1"
-    Warning (13310): Register "move_translator:move_translator_inst|x_temp[3]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|x_temp[3]~_emulated" and latch "move_translator:move_translator_inst|x_temp[3]~5"
-    Warning (13310): Register "move_translator:move_translator_inst|x_temp[2]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|x_temp[2]~_emulated" and latch "move_translator:move_translator_inst|x_temp[2]~9"
+    Warning (13310): Register "move_translator:move_translator_inst|y_temp[4]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|y_temp[4]~_emulated" and latch "move_translator:move_translator_inst|y_temp[4]~1"
+    Warning (13310): Register "move_translator:move_translator_inst|y_temp[3]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|y_temp[3]~_emulated" and latch "move_translator:move_translator_inst|y_temp[3]~5"
+    Warning (13310): Register "move_translator:move_translator_inst|y_temp[2]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|y_temp[2]~_emulated" and latch "move_translator:move_translator_inst|y_temp[2]~9"
+    Warning (13310): Register "move_translator:move_translator_inst|edges_last[0]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|edges_last[0]~_emulated" and latch "move_translator:move_translator_inst|edges_last[0]~1"
+    Warning (13310): Register "move_translator:move_translator_inst|edges_last[1]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|edges_last[1]~_emulated" and latch "move_translator:move_translator_inst|edges_last[1]~5"
+    Warning (13310): Register "move_translator:move_translator_inst|edges_last[2]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|edges_last[2]~_emulated" and latch "move_translator:move_translator_inst|edges_last[2]~9"
     Warning (13310): Register "move_translator:move_translator_inst|x_last[0]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|x_last[0]~_emulated" and latch "move_translator:move_translator_inst|x_last[0]~1"
-    Warning (13310): Register "move_translator:move_translator_inst|x_temp[1]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|x_temp[1]~_emulated" and latch "move_translator:move_translator_inst|x_temp[1]~13"
-    Warning (13310): Register "move_translator:move_translator_inst|x_last[1]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|x_last[1]~_emulated" and latch "move_translator:move_translator_inst|x_temp[1]~13"
-    Warning (13310): Register "move_translator:move_translator_inst|x_last[2]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|x_last[2]~_emulated" and latch "move_translator:move_translator_inst|x_temp[2]~9"
-    Warning (13310): Register "move_translator:move_translator_inst|x_last[3]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|x_last[3]~_emulated" and latch "move_translator:move_translator_inst|x_temp[3]~5"
-    Warning (13310): Register "move_translator:move_translator_inst|x_last[4]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|x_last[4]~_emulated" and latch "move_translator:move_translator_inst|x_temp[4]~1"
+    Warning (13310): Register "move_translator:move_translator_inst|x_last[1]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|x_last[1]~_emulated" and latch "move_translator:move_translator_inst|x_last[1]~5"
+    Warning (13310): Register "move_translator:move_translator_inst|x_last[2]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|x_last[2]~_emulated" and latch "move_translator:move_translator_inst|x_last[2]~9"
+    Warning (13310): Register "move_translator:move_translator_inst|x_last[3]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|x_last[3]~_emulated" and latch "move_translator:move_translator_inst|x_last[3]~13"
+    Warning (13310): Register "move_translator:move_translator_inst|x_last[4]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|x_last[4]~_emulated" and latch "move_translator:move_translator_inst|x_last[4]~17"
+    Warning (13310): Register "move_translator:move_translator_inst|y_last[0]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|y_last[0]~_emulated" and latch "move_translator:move_translator_inst|y_last[0]~1"
+    Warning (13310): Register "move_translator:move_translator_inst|y_last[1]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|y_last[1]~_emulated" and latch "move_translator:move_translator_inst|y_last[1]~5"
+    Warning (13310): Register "move_translator:move_translator_inst|y_last[2]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|y_last[2]~_emulated" and latch "move_translator:move_translator_inst|y_temp[2]~9"
+    Warning (13310): Register "move_translator:move_translator_inst|y_last[3]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|y_last[3]~_emulated" and latch "move_translator:move_translator_inst|y_temp[3]~5"
+    Warning (13310): Register "move_translator:move_translator_inst|y_last[4]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|y_last[4]~_emulated" and latch "move_translator:move_translator_inst|y_temp[4]~1"
+    Warning (13310): Register "move_translator:move_translator_inst|x_temp[4]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|x_temp[4]~_emulated" and latch "move_translator:move_translator_inst|x_last[4]~17"
+    Warning (13310): Register "move_translator:move_translator_inst|x_temp[3]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|x_temp[3]~_emulated" and latch "move_translator:move_translator_inst|x_last[3]~13"
+    Warning (13310): Register "move_translator:move_translator_inst|x_temp[2]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|x_temp[2]~_emulated" and latch "move_translator:move_translator_inst|x_last[2]~9"
+    Warning (13310): Register "move_translator:move_translator_inst|x_temp[1]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|x_temp[1]~_emulated" and latch "move_translator:move_translator_inst|x_last[1]~5"
+    Warning (13310): Register "move_translator:move_translator_inst|y_temp[1]" is converted into an equivalent circuit using register "move_translator:move_translator_inst|y_temp[1]~_emulated" and latch "move_translator:move_translator_inst|y_last[1]~5"
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "Rx_data" is stuck at GND
+    Warning (13410): Pin "Tranlation_err" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
-Critical Warning (18061): Ignored Power-Up Level option on the following registers
-    Critical Warning (18010): Register move_translator:move_translator_inst|edges_last[0] will power up to High
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 187 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 2 input pins
-    Info (21059): Implemented 3 output pins
-    Info (21061): Implemented 181 logic cells
+Info (21057): Implemented 337 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 3 input pins
+    Info (21059): Implemented 6 output pins
+    Info (21061): Implemented 327 logic cells
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 39 warnings
-    Info: Peak virtual memory: 728 megabytes
-    Info: Processing ended: Thu Mar 24 00:30:20 2016
-    Info: Elapsed time: 00:00:26
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 32 warnings
+    Info: Peak virtual memory: 731 megabytes
+    Info: Processing ended: Sat Mar 26 22:53:07 2016
+    Info: Elapsed time: 00:00:25
     Info: Total CPU time (on all processors): 00:00:20
 
 

@@ -70,16 +70,16 @@ move_translator_inst:move_translator port map(
 );
 
 send: process(reset, clk_100)
-variable counter: std_logic_vector(16 downto 0) := (others=>'0');
+variable counter: std_logic_vector(26 downto 0) := (others=>'0');
 begin
 	if (reset = '0') then
 		counter := (others=>'0');
 		x <= "00001";
-		y <= "00001";
+		y <= "00002";
 		edges <= "0011";
 	elsif (clk_100 = '1' and clk_100'event) then
 		counter := counter + '1';
-		if(counter(16) = '1' and counter(15) = '1') then
+		if(counter(26) = '1') then
 			x <= x + '1';
 			counter := (others => '0');
 		end if;

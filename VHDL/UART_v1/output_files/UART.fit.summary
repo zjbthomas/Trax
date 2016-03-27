@@ -1,12 +1,12 @@
-Fitter Status : Successful - Sun Mar 20 11:42:25 2016
+Fitter Status : Successful - Sun Mar 27 10:25:49 2016
 Quartus II 64-Bit Version : 15.0.0 Build 145 04/22/2015 Patches 0.01we SJ Web Edition
 Revision Name : UART
 Top-level Entity Name : top
 Family : Cyclone IV E
 Device : EP4CE115F29C7
 Timing Models : Final
-Total logic elements : 152 / 114,480 ( < 1 % )
-    Total combinational functions : 123 / 114,480 ( < 1 % )
+Total logic elements : 151 / 114,480 ( < 1 % )
+    Total combinational functions : 122 / 114,480 ( < 1 % )
     Dedicated logic registers : 97 / 114,480 ( < 1 % )
 Total registers : 97
 Total pins : 24 / 529 ( 5 % )

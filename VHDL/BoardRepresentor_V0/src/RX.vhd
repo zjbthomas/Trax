@@ -34,11 +34,13 @@ port (
 end RX;
 
 architecture Behavioral of RX is
+
 	type states is (idle, start, bit0, bit1, bit2, bit3, bit4, bit5, bit6, bit7, stop);
 	signal state : states := idle;
 	constant counter_max : integer := 5207; -- For 19200 baud rate
 	signal counter : integer range 0 to counter_max - 1;
 	signal reg : std_logic_vector(7 downto 0);
+	
 begin
 	process(clk, reset)
 	begin

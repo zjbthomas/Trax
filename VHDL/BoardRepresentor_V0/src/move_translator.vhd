@@ -8,7 +8,7 @@
 -- Project Name: BetaTrax
 -- Target Devices: EP4CE115F29C8
 -- Tool versions: Quartus II 13.0sp1 (64-bit)
--- Description: The move_translator will translate the tile type into corresponding comamand. 
+-- Description: The move_translator will translate the tile type and tile position into corresponding comamand. 
 --
 -- Dependencies: N/A
 --
@@ -21,6 +21,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 entity move_translator is
 port(
@@ -36,7 +37,7 @@ end move_translator;
 
 architecture Behavioral of move_translator is
 
-type states is (idle, axis_x, axis_y, tile_pattern);
+type states is (idle, axis_x, axis_y, tile_pattern, line_feed);
 signal Tx_state:		states := idle;
 signal edges_last: 	std_logic_vector(3 downto 0) := (others=>'0'); -- last four edges of the tile, recorded counter-clockwisely starting from the top edge
 signal x_last:  		std_logic_vector(4 downto 0) := (others=>'0'); -- last x coordinate
@@ -83,11 +84,11 @@ begin
 			y_temp <= y;
 			Tx_en <= '0';
 			Tx_state <= idle;
-		elsif falling_edge(clk) then
+		elsif (falling_edge(clk)) then
 			if (Tx_busy_temp = '0') then
 				case Tx_state is
 					when idle =>
-						if  (edges /= edges_last) or (x /= x_last) or (y /= y_last) then
+						if (edges /= edges_last) or (x /= x_last) or (y /= y_last)then
 							edges_last <= edges;
 							x_last <= x;
 							y_last <= y;
@@ -100,24 +101,35 @@ begin
 							x_temp <= x_temp - "11010";
 							Tx_data <= x"41";
 						else
-							Tx_state <= axis_y;
 							Tx_data <= x_temp + x"40";
+							Tx_state <= axis_y;
 						end if;
 						Tx_en <= '1';
 					when axis_y =>
-						if(y_temp > "11010") then
-							y_temp <= y_temp - "11010";
-							Tx_data <= x"41";
-						else
+						if(y_temp > "11101") then	--if y > 29
+							y_temp <= y_temp - "11110";
+							Tx_data <= x"33";
+						elsif((y_temp <= "11101") and (y_temp > "10011")) then	--if 19 < y <= 29
+							y_temp <= y_temp - "10100";
+							Tx_data <= x"32";
+						elsif((y_temp <= "10011") and (y_temp > "01001")) then	--if 9 < y <= 19
+							y_temp <= y_temp - "01010";
+							Tx_data <= x"31";
+						else	--if y <= 9
+							Tx_data <= y_temp + x"30";
 							Tx_state <= tile_pattern;
-							Tx_data <= y_temp + x"40";
 						end if;
 						Tx_en <= '1';
 					when tile_pattern =>
 						Tx_data <= pattern;
 						Tx_en <= '1';
+						Tx_state <= line_feed;
+					when line_feed =>
+						Tx_data <= x"0a";
+						Tx_en <= '1';
 						Tx_state <= idle;
-					when others => Tx_state <= idle;
+					when others => 
+						Tx_state <= idle;
 				end case;
 			else
 				Tx_en <= '0';
@@ -125,9 +137,9 @@ begin
 		end if;
 	end process;	
 	
-pattern <= x"2f" when (edges(0) = edges(1)) else
-			x"5c" when (edges(1) = edges(2)) else
-			x"2b";
+pattern <= x"2f" when (edges(0) = edges(1)) else	--when pattern is "/"
+			x"5c" when (edges(1) = edges(2)) else	--when pattern is "\"
+			x"2b";	--when pattern is "+"
 			
 Tx_busy <= Tx_busy_temp;
 
